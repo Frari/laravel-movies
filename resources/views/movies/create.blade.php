@@ -3,7 +3,7 @@
 @section('content')
   <div class="container">
     <h1>Inserimento nuovo film</h1>
-
+{{-- validayione campi form --}}
     @if ($errors->any())
       <div class="alert alert-danger">
           <ul>
