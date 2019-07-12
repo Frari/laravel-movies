@@ -21,13 +21,24 @@ class MovieController extends Controller
 
     public function create()
     {
-        //
+      $genres = Genre::all();
+      return view ('movies.create', compact('genres'));
     }
 
 
     public function store(Request $request)
     {
-        //
+      $validatedData = $request->validate([
+        'title' => 'required|max:255',
+        'release' => 'required|numeric|between:1900,2019',
+      ]);
+
+      $dati = $request->all();
+      $nuovo_film = new Movie();
+      $nuovo_film->fill($dati);
+      $nuovo_film->save();
+
+      return redirect()->route('movies.index');
     }
 
 
